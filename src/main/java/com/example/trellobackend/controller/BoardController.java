@@ -3,6 +3,7 @@ package com.example.trellobackend.controller;
 import com.example.trellobackend.model.Board;
 import com.example.trellobackend.repository.BoardRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,11 @@ public class BoardController {
     @GetMapping
     public Iterable<Board> findAll() {
         return repository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Board findById(@PathVariable Long id) {
+        return repository.findById(id).orElse(null);
     }
 
 }
