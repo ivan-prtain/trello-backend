@@ -5,6 +5,8 @@ import com.example.trellobackend.repository.CardsRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cards")
@@ -16,8 +18,8 @@ public class CardsController {
         this.repository = repository;
     }
 
-    @GetMapping
-    public Iterable<Cards> findAll() {
-        return repository.findAll();
+    @GetMapping("/{id}")
+    public List<Cards> findById(@PathVariable int id) {
+        return repository.findByReference(id);
     }
 }

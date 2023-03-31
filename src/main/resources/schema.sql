@@ -16,8 +16,8 @@ create table cards(
     id int auto_increment,
     name varchar(255) not null,
     message varchar(255),
-    board_column_id int not null,
+    reference int not null,
     primary key (id),
-    foreign key (board_column_id) references board_columns(id)
+    foreign key (reference) references board_columns(id)
 );
 
